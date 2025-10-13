@@ -1,0 +1,246 @@
+---
+title: "Alzheimer disease + scRank"
+author: "Beatriz Morais; Julia Apolonio; Diego M. Coelho"
+date: today
+format:
+  html:
+    self-contained: true
+    toc: true
+    toc-location: left
+    number-sections: true
+    page-layout: full
+    css: notebook-theme.css
+    theme: flatly
+    grid:
+      sidebar-width: 250px
+editor: visual
+---
+
+```{r libraries, warning=FALSE, include=FALSE}
+
+library(vroom)
+library(dplyr)
+library(ComplexHeatmap)
+library(circlize)
+library(reshape2)
+library(scales)
+library(tidyr)
+library(cowplot)
+library(ggplot2)
+library(GENIE3)
+
+```
+
+```{r import, warning=FALSE, include=FALSE}
+#|warning: false
+#|include: false
+
+# Load data
+perb_score <- read.table("data/perbscore_all_targets.txt", header = TRUE)
+
+# Filter out 0s (to avoid log10 issues), mark as NA
+perb_score <- perb_score %>%
+  mutate(perb_score = ifelse(perb_score <= 0, NA, perb_score)) %>%
+  mutate(perb_score = log10(perb_score))
+
+# Identify outliers
+iqr <- IQR(perb_score$perb_score, na.rm = TRUE)
+q1 <- quantile(perb_score$perb_score, 0.25, na.rm = TRUE)
+q3 <- quantile(perb_score$perb_score, 0.75, na.rm = TRUE)
+
+lower_bound <- q1 - 1.5 * iqr
+
+dist1 <- ggplot(perb_score, aes(x = perb_score)) +
+    geom_histogram(bins = 30, fill = "steelblue", color = "white") +
+    labs(
+        title = "Distribution of perturbation score",
+        x = "log10(Perturbation score)",
+        y = "Counts per bin"
+    ) +
+    geom_vline(xintercept = lower_bound, color = "red") +
+    theme_classic()
+
+# Mark outliers as NA so they show up gray
+perb_score <- perb_score %>%
+  mutate(perb_score = ifelse(perb_score < lower_bound, lower_bound, perb_score))
+
+dist2 <- ggplot(perb_score, aes(x = perb_score)) +
+    geom_histogram(bins = 30, fill = "steelblue", color = "white") +
+    labs(
+        title = "Distribution of perturbation score (after imputation)",
+        x = "log10(Perturbation score)",
+        y = "Counts per bin"
+    ) +
+    theme_classic()
+
+
+# Rescale across non-NA values
+range_vals <- range(perb_score$perb_score, na.rm = TRUE)
+
+perb_score <- perb_score %>%
+  mutate(perb_score = rescale(perb_score, to = c(0, 1), from = range_vals))
+
+perb_score <- perb_score %>% separate(cell_type, into = c("braak_stage", "cell_type"), sep = "_", extra = "merge")
+
+# Define the dictionary
+celltype_to_macro <- c(
+  "Lamp5_Lhx6-MTG" = "Inhibitory neurons",
+  "Sncg-MTG"       = "Inhibitory neurons",
+  "L5-IT-MTG"      = "Excitatory neurons",
+  "VLMC-MTG"       = "Endo",
+  "L5-ET-MTG"      = "Excitatory neurons",
+  "Chandelier-MTG" = "Inhibitory neurons",
+  "Lamp5-MTG"      = "Inhibitory neurons",
+  "Astro"          = "Astrocytes",
+  "L4-IT-MTG"      = "Excitatory neurons",
+  "L6-CT-MTG"      = "Excitatory neurons",
+  "Sst-MTG"        = "Inhibitory neurons",
+  "Oligo-MTG"      = "Oligodendrocytes",
+  "microglia"      = "Microglia",
+  "Vip-MTG"        = "Inhibitory neurons",
+  "L6-IT-MTG"      = "Excitatory neurons",
+  "L56-NP-MTG"     = "Excitatory neurons",
+  "OPC-MTG"        = "OPC",
+  "PAX6-MTG"       = "Inhibitory neurons",
+  "L6b-MTG"        = "Excitatory neurons",
+  "L6-IT-Car3"     = "Excitatory neurons",
+  "Pvalb"          = "Inhibitory neurons"
+)
+
+celltype_overall <- c(
+  "OPC"                 = "Non-neuronal",
+  "Endo"                = "Non-neuronal",
+  "Microglia"           = "Non-neuronal",
+  "Oligodendrocytes"    = "Non-neuronal",
+  "Astrocytes"          = "Non-neuronal",
+  "Inhibitory neurons"  = "Inhibitory neurons",
+  "Excitatory neurons"  = "Excitatory neurons"
+)
+
+# Map to a new column
+perb_score <- perb_score %>%
+  mutate(macrogroup = celltype_to_macro[cell_type]) %>%
+  mutate(overgroup = celltype_overall[macrogroup])
+
+```
+
+```{r plots, warning=FALSE, include=FALSE}
+#|include: false
+#|warning: false
+
+# Convert to heatmap matrix
+heatmap_matrix <- acast(perb_score, braak_stage + cell_type ~ target, value.var = "perb_score")
+cell_group <- perb_score %>% select(cell_type, braak_stage, overgroup) %>% distinct() %>% arrange(braak_stage, cell_type) %>% pull(overgroup) %>% as.vector()
+
+# Plot
+heat <- Heatmap(
+  heatmap_matrix,
+  name = "log10(PS)",
+  cluster_rows = FALSE,
+  cluster_columns = FALSE,
+  show_heatmap_legend = TRUE,
+  row_split = cell_group,
+  na_col = "gray"  # gray for outliers
+)
+
+heatmap_matrix2 <- acast(perb_score, cell_type + braak_stage ~ target, value.var = "perb_score")
+
+heat2 <- Heatmap(
+  heatmap_matrix2,
+  name = "log10(PS)",
+  row_title = "Cell Types",
+  cluster_rows = FALSE,
+  cluster_columns = FALSE,
+  show_heatmap_legend = TRUE,
+  na_col = "gray"  # gray for outliers
+)
+
+n <- nrow(heatmap_matrix2)
+diff_matrix <- heatmap_matrix2[seq(2, n, by = 2), ] - heatmap_matrix2[seq(1, n, by = 2), ]
+rownames(diff_matrix) <- sort(unique(perb_score$cell_type))
+
+hdiff <- Heatmap(
+  diff_matrix,
+  name = "Delta(PS)",
+  row_title = "Cell Types",
+  cluster_rows = FALSE,
+  cluster_columns = FALSE,
+  show_heatmap_legend = TRUE,
+  na_col = "gray"  # gray for outliers
+)
+
+```
+
+```{r target, eval=FALSE, include=FALSE}
+
+sncg_late <- readRDS("data/456_Sncg-MTG_weight_GENIE3_1000.rds")
+sncg_early <- readRDS("data/123_Sncg-MTG_weight_GENIE3_175.rds")
+
+max <- dim(sncg_late)[1]**2*.01
+
+linkList_late <- getLinkList(sncg_late, reportMax = max) %>% filter(regulatoryGene == "ANK3")
+linkList_late <- linkList_late %>% mutate(condition = "late")
+
+linkList_early <- getLinkList(sncg_early, reportMax = max) %>% filter(regulatoryGene == "ANK3")
+linkList_early <- linkList_early %>% mutate(condition = "early")
+
+linkList <- rbind(linkList_late, linkList_early)
+
+```
+
+## Introduction
+
+Alzheimer’s disease (AD) is one of the leading causes of dementia worldwide, characterized by the accumulation of β-amyloid plaques, tau protein neurofibrillary tangles, neuroinflammation, and progressive synaptic loss. Despite advances in traditional therapies aimed at reducing the buildup of toxic proteins, new approaches have explored modulation of brain inflammation, neuronal protection, and regulation of metabolic and vascular pathways as complementary strategies for treating the disease.
+
+In this context, prioritizing the cell types affected by potential therapeutic targets is essential for understanding the specificity and possible side effects of pharmacological interventions. Single-cell RNA sequencing (scRNA-seq) analysis allows for the characterization of brain cellular heterogeneity, revealing specific vulnerability patterns in subtypes of microglia, astrocytes, and neurons during AD progression.
+
+Recently, the scRank tool was developed to model drug-induced perturbations in scRNA-seq data, inferring the response of different cell types based on untreated samples. Applying this approach to Alzheimer’s disease makes it possible to simulate drug effects on cell type–specific gene regulatory networks (GRNs), thereby identifying more precise and safer therapeutic targets.
+
+## Workflow
+
+It was run our workflow using scRank tool + GENIE3 + Seurat: [link](https://github.com/diegomscoelho/nf_scrank).
+
+```bash
+nextflow run main.nf \
+  --obj /home/bpdrmorais/nf_scrank/SEAD_MTG_braakstage_symbol.rds \
+  --column cell_braak \
+  --species human \
+  --n_cells 1000 \
+  --n_cores 16 \
+  --target input_bellenguez.txt \
+  -profile singularity \
+  --outdir results_seadcell2 \
+  -resume
+```
+
+## Results
+
+To avoid low expression values biases, we imputed lower q1 values to all values lower than q1.
+
+```{r dist, warning=FALSE, echo=FALSE, fig.width=10}
+
+plot_grid(dist1,dist2)
+
+```
+
+**Fig1. Distribution of pertubation scores.** Before (left) and after removal of imputation of low values.
+
+---
+
+```{r heat, warning=FALSE, echo=FALSE, fig.width=10, fig.height=8}
+
+heat
+
+```
+
+**Fig2. Perturbation score among cell types and braak stages.** Heatmap representing cell types + braak stage vs. genes. Perturbation scores range from low (blue) to high (red).
+
+---
+
+```{r diff, warning=FALSE, echo=FALSE, fig.width=10, fig.height=6}
+
+hdiff
+
+```
+
+**Fig3. Perturbation score differences late vs. early braak stages.** Heatmap representing cell types and differences between late and early braak scores. Differences between perturbation scores range from low (blue) to high (red), taking into account that blue is higher in early braak stage and red is higher in late braak.
