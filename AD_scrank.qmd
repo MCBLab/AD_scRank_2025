@@ -36,7 +36,7 @@ library(GENIE3)
 #|include: false
 
 # Load data
-perb_score <- read.table("data/perbscore_all_targets.txt", header = TRUE)
+perb_score <- read.table("data/perbscore_all_targets2.txt", header = TRUE)
 
 # Filter out 0s (to avoid log10 issues), mark as NA
 perb_score <- perb_score %>%
@@ -129,7 +129,7 @@ perb_score <- perb_score %>%
 #|warning: false
 
 # Convert to heatmap matrix
-heatmap_matrix <- acast(perb_score, braak_stage + cell_type ~ target, value.var = "perb_score")
+heatmap_matrix <- acast(perb_score, braak_stage + cell_type ~ target, value.var = "perb_score", fun.aggregate = mean)
 cell_group <- perb_score %>% select(cell_type, braak_stage, overgroup) %>% distinct() %>% arrange(braak_stage, cell_type) %>% pull(overgroup) %>% as.vector()
 
 # Plot
@@ -169,6 +169,20 @@ hdiff <- Heatmap(
   na_col = "gray"  # gray for outliers
 )
 
+heat3 <- ifelse(heatmap_matrix < 0.7, 0, 1) %>%
+  Heatmap(
+  .,
+  name = "log10(PS)",
+  cluster_rows = FALSE,
+  cluster_columns = FALSE,
+  show_heatmap_legend = TRUE,
+  border = TRUE,
+  col = colorRamp2(c(0, 1), c("white", "red")),
+  row_split = cell_group,
+  na_col = "gray"  # gray for outliers
+)
+
+
 ```
 
 ```{r target, eval=FALSE, include=FALSE}
@@ -190,17 +204,17 @@ linkList <- rbind(linkList_late, linkList_early)
 
 ## Introduction
 
-Alzheimer’s disease (AD) is one of the leading causes of dementia worldwide, characterized by the accumulation of β-amyloid plaques, tau protein neurofibrillary tangles, neuroinflammation, and progressive synaptic loss. Despite advances in traditional therapies aimed at reducing the buildup of toxic proteins, new approaches have explored modulation of brain inflammation, neuronal protection, and regulation of metabolic and vascular pathways as complementary strategies for treating the disease.
+Alzheimer's disease (AD) is one of the leading causes of dementia worldwide, characterized by the accumulation of β-amyloid plaques, tau protein neurofibrillary tangles, neuroinflammation, and progressive synaptic loss. Despite advances in traditional therapies aimed at reducing the buildup of toxic proteins, new approaches have explored modulation of brain inflammation, neuronal protection, and regulation of metabolic and vascular pathways as complementary strategies for treating the disease.
 
 In this context, prioritizing the cell types affected by potential therapeutic targets is essential for understanding the specificity and possible side effects of pharmacological interventions. Single-cell RNA sequencing (scRNA-seq) analysis allows for the characterization of brain cellular heterogeneity, revealing specific vulnerability patterns in subtypes of microglia, astrocytes, and neurons during AD progression.
 
-Recently, the scRank tool was developed to model drug-induced perturbations in scRNA-seq data, inferring the response of different cell types based on untreated samples. Applying this approach to Alzheimer’s disease makes it possible to simulate drug effects on cell type–specific gene regulatory networks (GRNs), thereby identifying more precise and safer therapeutic targets.
+Recently, the scRank tool was developed to model drug-induced perturbations in scRNA-seq data, inferring the response of different cell types based on untreated samples. Applying this approach to Alzheimer's disease makes it possible to simulate drug effects on cell type--specific gene regulatory networks (GRNs), thereby identifying more precise and safer therapeutic targets.
 
 ## Workflow
 
 It was run our workflow using scRank tool + GENIE3 + Seurat: [link](https://github.com/diegomscoelho/nf_scrank).
 
-```bash
+``` bash
 nextflow run main.nf \
   --obj /home/bpdrmorais/nf_scrank/SEAD_MTG_braakstage_symbol.rds \
   --column cell_braak \
@@ -225,9 +239,9 @@ plot_grid(dist1,dist2)
 
 **Fig1. Distribution of pertubation scores.** Before (left) and after removal of imputation of low values.
 
----
+------------------------------------------------------------------------
 
-```{r heat, warning=FALSE, echo=FALSE, fig.width=10, fig.height=8}
+```{r heat, warning=FALSE, echo=FALSE, fig.width=12, fig.height=8}
 
 heat
 
@@ -235,9 +249,9 @@ heat
 
 **Fig2. Perturbation score among cell types and braak stages.** Heatmap representing cell types + braak stage vs. genes. Perturbation scores range from low (blue) to high (red).
 
----
+------------------------------------------------------------------------
 
-```{r diff, warning=FALSE, echo=FALSE, fig.width=10, fig.height=6}
+```{r diff, warning=FALSE, echo=FALSE, fig.width=12, fig.height=6}
 
 hdiff
 
