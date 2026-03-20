@@ -1,1 +1,0 @@
-Nextflow run main.nf --obj /home/bpdrmorais/sead_project/mtg_scrank.rds --column cell_braak --species human --n_cells 1000 --n_cores 16 --target input_bellenguez.txt -profile singularity --outdir results -resume
