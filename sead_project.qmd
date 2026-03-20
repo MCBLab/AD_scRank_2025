@@ -1,0 +1,80 @@
+---
+title: "Alzheimer’s Disease Single-Cell Analysis (SEAAD)"
+author: "Beatriz Morais, Julia Apolonio e Diego Coelho"
+date: today
+format:
+  html:
+    toc: true
+    toc-depth: 3
+    number-sections: true
+    theme: cosmo
+    code-fold: true
+    code-tools: true
+    css: style.css
+---
+
+# Introduction
+
+[Alzheimer’s disease]{.underline} (AD) is a progressive neurodegenerative disorder and one of the leading causes of dementia worldwide, characterized by pathological features such as β-amyloid plaques, tau neurofibrillary tangles, neuroinflammation, and synaptic dysfunction.
+
+Understanding how different brain cell types are affected during disease progression remains a major challenge. Recent advances in single-cell RNA sequencing (scRNA-seq) enable the exploration of cellular heterogeneity at high resolution, allowing the identification of cell-type-specific alterations associated with AD.
+
+In this project, we analyze large-scale scRNA-seq datasets from the Seattle Alzheimer’s Disease Atlas (SEAAD), focusing on two key brain regions: the Middle Temporal Gyrus (MTG) and the Dorsolateral Prefrontal Cortex (DLPFC).
+
+The workflow involves processing and organizing high-dimensional data to generate curated subsets for downstream analyses. These include disease-stage comparisons and detailed cell-type characterization, providing a structured foundation for exploring molecular and cellular patterns associated with Alzheimer’s disease.
+
+------------------------------------------------------------------------
+
+# Data Sources
+
+The datasets used in this project include:
+
+-   SEAAD MTG dataset (.h5ad)
+-   SEAAD DLPFC dataset (.h5ad)
+-   Metadata with selected cell IDs (.csv)
+
+> 🔗 Add links here:
+>
+> \- Dataset link:
+>
+> -   [MTG dataset](https://sea-ad-single-cell-profiling.s3.amazonaws.com/MTG/RNAseq/SEAAD_MTG_RNAseq_all-nuclei.2024-02-13.h5ad "MTG DATASET");
+>
+> -   [DLPFC dataset](https://sea-ad-single-cell-profiling.s3.amazonaws.com/PFC/RNAseq/SEAAD_A9_RNAseq_final-nuclei.2024-02-13.h5ad)
+>
+> \- Metadata link
+>
+> -   [MTG METADATA](https://sea-ad-single-cell-profiling.s3.amazonaws.com/MTG/RNAseq/Supplementary%20Information/SEAAD_MTG_RNAseq_all-nuclei_metadata.2024-02-13.csv);
+>
+> -   [DLPFC METADATA](https://sea-ad-single-cell-profiling.s3.amazonaws.com/PFC/RNAseq/SEAAD_A9_RNAseq_all-nuclei_metadata.2024-02-13.csv)
+
+------------------------------------------------------------------------
+
+# Workflow
+
+## Overview
+
+The analysis pipeline consists of:
+
+1.  Filtering patients with **Dementia diagnosis**\
+2.  Classifying samples based on **Braak stages**\
+3.  Selecting cells (200–1000 per cell type)\
+4.  Processing large-scale datasets using Scanpy (Python)\
+5.  Exporting curated subsets for downstream analysis in R (Seurat)\
+6.  Creating a metadata column for scRank-based analysis\
+7.  Preparing the dataset for downstream regulatory analysis
+
+------------------------------------------------------------------------
+
+# Results
+
+## Cell-Type Distribution
+
+After rigorous quality control and data conversion, we performed dimensionality reduction to visualize the distribution of cells in the MTG region. The UMAP projection reveals clear clustering of major brain cell types, highlighting the cellular heterogeneity of the dataset.
+
+![UMAP visualization of the original cell-type composition in the Middle Temporal Gyrus (MTG) subset.](pictures/celltype.png){#fig-umap-geral fig-align="center"}
+
+## Disease Staging (Braak Pathology)
+
+To investigate cellular dynamics during Alzheimer's disease progression, neuronal subtypes were simplified into major classes (Excitatory and Inhibitory) and segregated according to Braak pathology. The split UMAP demonstrates the spatial comparison of cell populations between Early and Late Braak stages.
+
+![Comparação espacial das populações celulares entre os estágios Iniciais (Early Braak) e Avançados (Late Braak) da doença.](pictures/lateXearly.png){#fig-umap-braak}
