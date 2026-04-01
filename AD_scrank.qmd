@@ -200,7 +200,7 @@ Recently, the scRank tool was developed to model drug-induced perturbations in s
 
 It was run our workflow using scRank tool + GENIE3 + Seurat: [link](https://github.com/diegomscoelho/nf_scrank).
 
-```bash
+``` bash
 nextflow run main.nf \
   --obj /home/bpdrmorais/nf_scrank/SEAD_MTG_braakstage_symbol.rds \
   --column cell_braak \
@@ -225,7 +225,7 @@ plot_grid(dist1,dist2)
 
 **Fig1. Distribution of pertubation scores.** Before (left) and after removal of imputation of low values.
 
----
+------------------------------------------------------------------------
 
 ```{r heat, warning=FALSE, echo=FALSE, fig.width=10, fig.height=8}
 
@@ -235,7 +235,7 @@ heat
 
 **Fig2. Perturbation score among cell types and braak stages.** Heatmap representing cell types + braak stage vs. genes. Perturbation scores range from low (blue) to high (red).
 
----
+------------------------------------------------------------------------
 
 ```{r diff, warning=FALSE, echo=FALSE, fig.width=10, fig.height=6}
 
