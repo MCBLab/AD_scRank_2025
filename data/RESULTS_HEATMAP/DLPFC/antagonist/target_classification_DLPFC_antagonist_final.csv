@@ -1,0 +1,39 @@
+"target","n_celltypes","top_celltypes","top_stages","max_score","mean_score","selectivity","stage_pref","region","drugs","functional_category","target_type","max_phase"
+"ANK3",16,"OPC, L6b, Sncg, L5_6_NP, Endo, L6_IT_Car3, Pax6, L5_ET, L6_IT, Sst, Chandelier, L6_CT, L2_3_IT, Oligo, L5_IT, Sst_Chodl","Early/Late",1.21901646618964e-08,5.96240641944414e-09,"Não seletivo","Both stages","DLPFC",NA,NA,NA,NA
+"ANKH",1,"Lamp5","Late",4.16269101702757e-09,4.16269101702757e-09,"Seletivo","Late only","DLPFC",NA,NA,NA,NA
+"APOE",1,"Micro-PVM","Early",6.24848971973984e-09,6.24848971973984e-09,"Seletivo","Early only","DLPFC","LX1001; RO7812653","agonist-like/antagonist-like","Gene Therapy (Expressor); ASO (Silencer)",1
+"APP",6,"Oligo, Sncg, L5_6_NP, Pax6, L5_ET, Lamp5","Early/Late",1.06192345595868e-08,5.81535219083389e-09,"Não seletivo","Both stages","DLPFC","Buntanetap; Donanemab; Etalanetug + Lecanemab; Gantenerumab; Lecanemab; Remternetug; RG6289 + donanemab; Solanezumab; Trontinemab; Valiltramiprosate; AADvac1 + AAmAb; ACI-24.060; BEY2153; Contraloid acetate; Etalanetug + Lecanemab (Ph2); KarXT + KarX-EC + Lecanemab; RQC; Sabirnetug; SHR-1707; Trontinemab (Ph2); AK152; AS-S603; AV-1959D; AV-1959R; CM383; DDN-A-0101; DUVAX; ION269; Mivelsiran; Phenserine; PMN310","antagonist-like","Translation Inhibitor; Monoclonal Antibody; Inhibitor; Vaccine; Aggregation Inhibitor; ASO (Silencer); RNAi (Silencer)",1
+"BIN1",1,"Oligo","Early",3.83380815979869e-09,3.83380815979869e-09,"Seletivo","Early only","DLPFC",NA,NA,NA,NA
+"CACNA1C",15,"Sst_Chodl, L4_IT, L2_3_IT, Vip, L6_IT_Car3, Pax6, L6_IT, Lamp5_Lhx6, Sst, L6_CT, L5_IT, Lamp5, L6b, L5_6_NP, VLMC","Early/Late",8.63800347681992e-09,5.6981303862595e-09,"Não seletivo","Both stages","DLPFC","Losartan + Amlodipine","antagonist-like","Blocker",2
+"CHRM2",3,"L4_IT, L6b, Sst_Chodl","Late",6.21903328857105e-09,5.16513458924798e-09,"Não seletivo","Late only","DLPFC","KarXT (xanomeline+trospium); KarXT + KarX-EC; KarXT + KarX-EC + Lecanemab; NSC001 + Trospium","antagonist-like","Antagonist",2
+"CHRM3",8,"Sncg, Micro-PVM, Vip, Lamp5, Chandelier, L5_IT, L6b, Sst_Chodl","Early/Late",1.42230650398391e-08,7.79479541746417e-09,"Não seletivo","Both stages","DLPFC","KarXT (xanomeline+trospium); KarXT + KarX-EC; KarXT + KarX-EC + Lecanemab; NSC001 + Trospium","antagonist-like","Antagonist",2
+"CHRM5",1,"VLMC","Early",4.14423013847184e-09,4.14423013847184e-09,"Seletivo","Early only","DLPFC","KarXT (xanomeline+trospium); KarXT + KarX-EC; KarXT + KarX-EC + Lecanemab; NSC001 + Trospium","antagonist-like","Antagonist",2
+"CLU",5,"L5_IT, Pax6, L5_ET, L6_CT, L6_IT","Early/Late",5.02481013508409e-09,4.39422534056319e-09,"Não seletivo","Both stages","DLPFC",NA,NA,NA,NA
+"COX7C",3,"L6_CT, L6_IT, L6_IT_Car3","Late",4.69263197231175e-09,4.21706488904623e-09,"Não seletivo","Late only","DLPFC",NA,NA,NA,NA
+"CSF1R",1,"Micro-PVM","Early",7.75635442625122e-09,7.75635442625122e-09,"Seletivo","Early only","DLPFC","Enrupatinib","antagonist-like","Inhibitor",2
+"CTSB",1,"Micro-PVM","Early",5.47372331182401e-09,5.47372331182401e-09,"Seletivo","Early only","DLPFC",NA,NA,NA,NA
+"DYRK1A",4,"OPC, L5_ET, Lamp5_Lhx6, Lamp5","Early/Late",5.1307155619292e-09,4.57275984080102e-09,"Não seletivo","Both stages","DLPFC","Leucettinib-21","antagonist-like","Inhibitor",1
+"FYN",3,"Oligo, Pax6, Astro","Early",6.32094032949955e-09,4.91677855325032e-09,"Não seletivo","Early only","DLPFC","Masitinib","antagonist-like","Inhibitor",3
+"GRIN1",13,"Sncg, Endo, L2_3_IT, L5_IT, Vip, L6_IT_Car3, Pax6, L5_ET, L6_CT, Lamp5, Lamp5_Lhx6, Pvalb, Sst_Chodl","Early/Late",7.53449127774786e-09,5.5554441844102e-09,"Não seletivo","Both stages","DLPFC","DAOIB + AO; Memantine; Xenon","agonist-like/antagonist-like","Enhancer; Antagonist; Modulator",1
+"GRIN2A",10,"Sst, L6b, Vip, L5_ET, Lamp5, L6_IT, Lamp5_Lhx6, L6_CT, Pvalb, Sncg","Early/Late",3.41080318270291e-08,9.13676280153134e-09,"Não seletivo","Both stages","DLPFC","DAOIB + AO; Memantine","agonist-like/antagonist-like","Enhancer; Antagonist",2
+"GRIN2B",9,"Sst, L5_6_NP, L5_ET, Lamp5, L6_IT, Chandelier, L6_IT_Car3, Pvalb, Vip","Early/Late",5.42100110109958e-09,4.5249406160728e-09,"Não seletivo","Both stages","DLPFC","DAOIB + AO; Memantine; BnH-015B","agonist-like/antagonist-like","Enhancer; Antagonist; Modulator",1
+"HS3ST5",4,"Sncg, Pax6, Lamp5, L6b","Early/Late",7.47673536307548e-09,5.02793620118805e-09,"Não seletivo","Both stages","DLPFC",NA,NA,NA,NA
+"HTR2C",1,"L5_6_NP","Early",4.37804885641711e-09,4.37804885641711e-09,"Seletivo","Early only","DLPFC","Trazodone; LY03017","antagonist-like","Antagonist",1
+"INPP5D",1,"Micro-PVM","Early",4.78781116470079e-09,4.78781116470079e-09,"Seletivo","Early only","DLPFC",NA,NA,NA,NA
+"JAK1",1,"VLMC","Early",5.34436090097759e-09,5.34436090097759e-09,"Seletivo","Early only","DLPFC","Baricitinib","antagonist-like","Inhibitor",2
+"JAK2",1,"Sst","Early",4.03748283839379e-09,4.03748283839379e-09,"Seletivo","Early only","DLPFC","Baricitinib","antagonist-like","Inhibitor",2
+"JAZF1",5,"Sst, Pax6, L5_ET, L2_3_IT, L6_IT","Early/Late",6.22891322693885e-09,4.49839269743897e-09,"Não seletivo","Both stages","DLPFC",NA,NA,NA,NA
+"KIT",1,"Lamp5","Early/Late",9.80789004121832e-09,7.29590539091066e-09,"Seletivo","Both stages","DLPFC","Masitinib; Nilotinib; Dasatinib + Quercetin","antagonist-like","Inhibitor",2
+"MAF",1,"Sst","Early/Late",4.05324022917704e-09,4.03862084702988e-09,"Seletivo","Both stages","DLPFC",NA,NA,NA,NA
+"MAPT",4,"Oligo, L2_3_IT, L6_CT, Lamp5","Early/Late",5.23739055916486e-09,4.32921934681806e-09,"Não seletivo","Both stages","DLPFC","Buntanetap; Etalanetug + Lecanemab; AADvac1; AADvac1 + AAmAb; ARO-MAPT; BEY2153; BIIB080; BMS-986446; Etalanetug + Lecanemab (Ph2); JNJ-64042056; MK-2214; Posdinemab; VY7523; ADEL-Y01; ALN-5288; AS-S603; AV-1980R; BIIB080 (Ph1); DUVAX; NIO752; OLX-07010","antagonist-like","Translation Inhibitor; Monoclonal Antibody; Vaccine; RNAi (Silencer); Inhibitor; ASO (Silencer); Aggregation Inhibitor",1
+"MGLL",3,"OPC, Sncg, Lamp5_Lhx6","Early",4.89421839769165e-09,4.5226495922802e-09,"Não seletivo","Early only","DLPFC","BMS-986368","antagonist-like","Inhibitor",2
+"NR3C1",2,"Vip, Pax6","Early",4.34918231456162e-09,4.21038469164119e-09,"Seletivo","Early only","DLPFC","CORT108297","antagonist-like","Antagonist",2
+"PDE5A",9,"L4_IT, L5_6_NP, L5_IT, L6_IT_Car3, L6_CT, L6_IT, Lamp5_Lhx6, L2_3_IT, Pvalb","Early/Late",1.46780147580221e-08,7.08723727214567e-09,"Não seletivo","Both stages","DLPFC","AR1001; Tadalafil","antagonist-like","Inhibitor",2
+"PLCG2",7,"Oligo, L4_IT, Sncg, Micro-PVM, Endo, Pax6, L5_ET","Early",1.88412922627826e-08,8.54656583478572e-09,"Não seletivo","Early only","DLPFC",NA,NA,NA,NA
+"PRKD3",1,"L6_IT_Car3","Early",3.84062667391738e-09,3.84062667391738e-09,"Seletivo","Early only","DLPFC",NA,NA,NA,NA
+"ROCK1",2,"Pax6, Micro-PVM","Early/Late",4.44406123062501e-09,4.23046480138847e-09,"Seletivo","Both stages","DLPFC","Fasudil","antagonist-like","Inhibitor",2
+"ROCK2",2,"Sncg, L2_3_IT","Early",4.11220955017307e-09,4.08077216904291e-09,"Seletivo","Early only","DLPFC","Fasudil","antagonist-like","Inhibitor",2
+"SLC24A4",1,"Sst","Early",9.28847476738558e-09,9.28847476738558e-09,"Seletivo","Early only","DLPFC",NA,NA,NA,NA
+"SNCA",1,"Pax6","Late",4.12267905853154e-09,4.12267905853154e-09,"Seletivo","Late only","DLPFC","Buntanetap","antagonist-like","Translation Inhibitor",3
+"SORL1",3,"L5_IT, Chandelier, Micro-PVM","Early/Late",5.73089815571914e-09,4.55595595060953e-09,"Não seletivo","Both stages","DLPFC",NA,NA,NA,NA
+"SORT1",1,"Endo","Late",4.1634372005432e-09,4.1634372005432e-09,"Seletivo","Late only","DLPFC","AL101","antagonist-like","Monoclonal Antibody",2
