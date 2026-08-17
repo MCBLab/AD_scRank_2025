@@ -1,0 +1,38 @@
+"target","n_celltypes","top_celltypes","top_stages","max_score","mean_score","selectivity","stage_pref","region","drugs","functional_category","target_type","max_phase"
+"ABL1",1,"VLMC","Late",3.94574972024577e-09,3.94574972024577e-09,"Seletivo","Late only","MTG","Nilotinib; Dasatinib + Quercetin","antagonist-like","Inhibitor",2
+"ADAMTS1",1,"VLMC","Late",2.76120780917219e-09,2.76120780917219e-09,"Seletivo","Late only","MTG",NA,NA,NA,NA
+"ANKH",1,"VLMC","Early",3.19566389957956e-09,3.19566389957956e-09,"Seletivo","Early only","MTG",NA,NA,NA,NA
+"APOE",2,"Astrocyte, Microglia-PVM","Early",3.15740662750089e-09,2.98774538709259e-09,"Seletivo","Early only","MTG","LX1001; RO7812653","agonist-like/antagonist-like","Gene Therapy (Expressor); ASO (Silencer)",1
+"BLNK",1,"Microglia-PVM","Early",4.03692036574589e-09,4.03692036574589e-09,"Seletivo","Early only","MTG",NA,NA,NA,NA
+"CACNA1C",14,"L6_IT_Car3, Chandelier, Lamp5, L6_CT, VLMC, Pvalb, L2_3_IT, Lamp5_Lhx6, L6b, Sst_Chodl, Pax6, Sncg, L5_IT, L5_6_NP","Early/Late",8.7064142725228e-09,5.32539491658003e-09,"Não seletivo","Both stages","MTG","Losartan + Amlodipine","antagonist-like","Blocker",2
+"CD3E",1,"Microglia-PVM","Late",7.0383723424034e-09,7.0383723424034e-09,"Seletivo","Late only","MTG","Foralumab","antagonist-like","Monoclonal Antibody",2
+"CHRM2",4,"L6_IT_Car3, Pvalb, L6b, Sst_Chodl","Early/Late",1.57553870958784e-08,1.04383569921134e-08,"Não seletivo","Both stages","MTG","KarXT (xanomeline+trospium); KarXT + KarX-EC; KarXT + KarX-EC + Lecanemab; NSC001 + Trospium","antagonist-like","Antagonist",2
+"CHRM3",12,"L6_IT_Car3, L4_IT, Sncg, Chandelier, L6b, L5_IT, Lamp5, L6_CT, Vip, L2_3_IT, L5_ET, Sst_Chodl","Early/Late",2.01832879472215e-08,8.33132502938357e-09,"Não seletivo","Both stages","MTG","KarXT (xanomeline+trospium); KarXT + KarX-EC; KarXT + KarX-EC + Lecanemab; NSC001 + Trospium","antagonist-like","Antagonist",2
+"CLU",4,"Astrocyte, L6_IT, L5_ET, OPC","Late/Early",1.03423773502319e-08,4.94911844091254e-09,"Não seletivo","Both stages","MTG",NA,NA,NA,NA
+"CNR1",2,"Vip, Pax6","Early/Late",1.80144190442506e-08,8.25906760441876e-09,"Seletivo","Both stages","MTG","Nabilone; Cannabidiol; IGC-AD1; Cannabidiol (Ph1)","agonist-like","Agonist",1
+"COX7C",2,"L5_ET, L6_IT_Car3","Late",4.23994441198166e-09,3.87423115305674e-09,"Seletivo","Late only","MTG",NA,NA,NA,NA
+"CTSB",1,"VLMC","Early",2.93380247457724e-09,2.93380247457724e-09,"Seletivo","Early only","MTG",NA,NA,NA,NA
+"GABRB1",7,"L6_IT_Car3, L4_IT, Lamp5, L5_6_NP, Pax6, Pvalb, Sncg","Early/Late",5.91472718556188e-09,3.78954494135013e-09,"Não seletivo","Both stages","MTG","Brexanolone","agonist-like","Modulator",2
+"GABRB2",5,"Lamp5_Lhx6, L5_IT, L6_CT, VLMC, L5_6_NP","Early/Late",8.93463029272837e-09,4.74785031331051e-09,"Não seletivo","Both stages","MTG","Brexanolone","agonist-like","Modulator",2
+"GABRB3",2,"Pvalb, L5_6_NP","Late",3.78484571823806e-09,3.28877625788429e-09,"Seletivo","Late only","MTG","Brexanolone","agonist-like","Modulator",2
+"GRIN1",15,"L6_IT_Car3, L4_IT, Lamp5_Lhx6, Sncg, L2_3_IT, Chandelier, L6b, L5_IT, L6_IT, L6_CT, L5_6_NP, Pax6, Sst, Pvalb, Lamp5","Early/Late",1.25943804694398e-08,5.28863644950337e-09,"Não seletivo","Both stages","MTG","DAOIB + AO; Memantine; Xenon","agonist-like/antagonist-like","Enhancer; Antagonist; Modulator",1
+"GRIN2A",12,"L6b, L6_IT, Chandelier, Pax6, Sst, Pvalb, L5_ET, L4_IT, Sst_Chodl, Vip, Sncg, L5_6_NP","Early/Late",3.73486170277078e-08,8.7010073035797e-09,"Não seletivo","Both stages","MTG","DAOIB + AO; Memantine","agonist-like/antagonist-like","Enhancer; Antagonist",2
+"GRIN2B",6,"Sncg, Chandelier, Lamp5, L6_IT_Car3, Sst, L5_6_NP","Early/Late",4.39932937851528e-09,3.71509897566241e-09,"Não seletivo","Both stages","MTG","DAOIB + AO; Memantine; BnH-015B","agonist-like/antagonist-like","Enhancer; Antagonist; Modulator",1
+"HS3ST5",3,"L6b, Lamp5, L6_IT","Early/Late",1.02913707427461e-08,6.03311816458516e-09,"Não seletivo","Both stages","MTG",NA,NA,NA,NA
+"HTR2C",5,"L6_IT_Car3, L5_6_NP, Sst, L5_ET, L6_CT","Early/Late",6.53443067287642e-09,4.28417242994202e-09,"Não seletivo","Both stages","MTG","Trazodone; LY03017","antagonist-like","Antagonist",1
+"INPP5D",2,"VLMC, Microglia-PVM","Early/Late",6.02569396602847e-09,4.51306772124871e-09,"Seletivo","Both stages","MTG",NA,NA,NA,NA
+"JAK1",2,"Oligodendrocyte, Pvalb","Early/Late",2.94436865772831e-09,2.82825015817819e-09,"Seletivo","Both stages","MTG","Baricitinib","antagonist-like","Inhibitor",2
+"JAK2",1,"VLMC","Early",2.75565498050935e-09,2.75565498050935e-09,"Seletivo","Early only","MTG","Baricitinib","antagonist-like","Inhibitor",2
+"JAZF1",2,"Microglia-PVM, L5_6_NP","Early",3.2223032506167e-09,2.99633540250878e-09,"Seletivo","Early only","MTG",NA,NA,NA,NA
+"MAF",1,"Lamp5","Early",4.3740187709512e-09,4.3740187709512e-09,"Seletivo","Early only","MTG",NA,NA,NA,NA
+"MAPT",3,"Chandelier, L2_3_IT, L6_IT_Car3","Early/Late",2.84954826838768e-09,2.79138964355217e-09,"Não seletivo","Both stages","MTG","Buntanetap; Etalanetug + Lecanemab; AADvac1; AADvac1 + AAmAb; ARO-MAPT; BEY2153; BIIB080; BMS-986446; Etalanetug + Lecanemab (Ph2); JNJ-64042056; MK-2214; Posdinemab; VY7523; ADEL-Y01; ALN-5288; AS-S603; AV-1980R; BIIB080 (Ph1); DUVAX; NIO752; OLX-07010","antagonist-like","Translation Inhibitor; Monoclonal Antibody; Vaccine; RNAi (Silencer); Inhibitor; ASO (Silencer); Aggregation Inhibitor",1
+"MGLL",1,"VLMC","Early",4.4108009968585e-09,4.4108009968585e-09,"Seletivo","Early only","MTG","BMS-986368","antagonist-like","Inhibitor",2
+"MME",1,"L4_IT","Early/Late",3.84438742637966e-09,3.3208691019178e-09,"Seletivo","Both stages","MTG",NA,NA,NA,NA
+"NCK2",1,"Microglia-PVM","Early",3.693994844813e-09,3.693994844813e-09,"Seletivo","Early only","MTG",NA,NA,NA,NA
+"PDE5A",10,"L6_CT, L6_IT, Oligodendrocyte, L5_6_NP, L5_ET, L6_IT_Car3, L2_3_IT, L5_IT, L6b, Pvalb","Early/Late",1.99534191322391e-08,6.15059389500975e-09,"Não seletivo","Both stages","MTG","AR1001; Tadalafil","antagonist-like","Inhibitor",2
+"PLCG2",15,"L6_CT, Chandelier, L2_3_IT, L6_IT_Car3, L6_IT, Pax6, L6b, L5_IT, Astrocyte, L5_6_NP, Pvalb, OPC, Lamp5_Lhx6, VLMC, Oligodendrocyte","Early/Late",1.30594235726249e-08,5.75164448664943e-09,"Não seletivo","Both stages","MTG",NA,NA,NA,NA
+"ROCK2",2,"Sncg, VLMC","Early",3.79565217244734e-09,3.37402325899846e-09,"Seletivo","Early only","MTG","Fasudil","antagonist-like","Inhibitor",2
+"SEPTIN7",2,"Oligodendrocyte, VLMC","Late",3.96791136367471e-09,3.84236773519218e-09,"Seletivo","Late only","MTG","REM0045392","agonist-like","Modulator",1
+"SLC24A4",1,"Astrocyte","Early",3.05567141123862e-09,3.05567141123862e-09,"Seletivo","Early only","MTG",NA,NA,NA,NA
+"SORL1",1,"Microglia-PVM","Early/Late",6.48164522452459e-09,4.99916349119763e-09,"Seletivo","Both stages","MTG",NA,NA,NA,NA
+"SORT1",2,"Oligodendrocyte, VLMC","Late",4.88614221286515e-09,4.11162432323646e-09,"Seletivo","Late only","MTG","AL101","antagonist-like","Monoclonal Antibody",2
